@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import QueryString from 'qs';
 import CopyToClipboard from 'react-copy-to-clipboard';
 import styled from 'styled-components';
@@ -80,7 +80,7 @@ const ShareWrapper = styled(Card)`
 `
 
 var lastButtonId = 1
-const defaultButton = {
+const defaultButtonStyle = {
     id: 1,
     url: '',
     action: 'link',
@@ -96,6 +96,7 @@ const defaultButton = {
 
 function Editor() {
     const [copied, setCopied] = useState(false)
+    const [defaultButton, setDefaultButton] = useState(defaultButtonStyle)
     const [data, setData] = useState({
         layout: {
             alignment: 'center',
@@ -148,6 +149,9 @@ function Editor() {
         const queryString = QueryString.stringify(data)
         return 'localhost:3000/share?' + queryString
     }
+    useEffect(() => {
+        setDefaultButton(data.buttons.at(-1))
+    }, [data])
     return (
         <>
             <EditorGlobalStyles/>
