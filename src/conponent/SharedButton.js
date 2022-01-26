@@ -77,7 +77,7 @@ function SharedButton({ data, place, callback }) {
         callback(data.id)
     }
     const openLink = () => {
-        if (data.newTab && data.action === "link") {
+        if (data.newTab === "true" && data.action === "link") {
             window.open(data.url)
         } else if (data.action === "link"){
             window.location.assign(data.url)
