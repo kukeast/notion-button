@@ -186,8 +186,8 @@ export const darkTheme = {
     gray4: color.GRAY5,
     gray3: color.GRAY6,
     gray2: color.GRAY8,
-    gray1: "#1c2022",
-    gray0: "#171a1c",
+    gray1: "#171a1c",
+    gray0: "#1c2022",
 
     primary: "#3787FF",
     primary0: "#243349",
