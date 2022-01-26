@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Theme from "./util/Theme";
+import ThemeStore from "./util/ThemeStore";
+import Editor from "./view/Editor";
+import Share from "./view/Share";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <ThemeStore>
+            <Theme>
+                <Routes>
+                    <Route path="/" element={<Editor/>}/>
+                    <Route path="/share" element={<Share/>}/>
+                    <Route path="/*" element={<p>404</p>}/>
+                </Routes>
+            </Theme>
+        </ThemeStore>
+    )
 }
-
+  
 export default App;
+  
