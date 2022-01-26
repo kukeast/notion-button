@@ -10,6 +10,7 @@ import SharedButtons from '../conponent/SharedButtons';
 import TextButton from '../conponent/TextButton';
 import { EditorGlobalStyles } from '../constants/global';
 import { color } from '../constants/theme';
+import Logo from '../conponent/Logo';
 
 const Wrapper = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
@@ -156,6 +157,7 @@ function Editor() {
         <>
             <EditorGlobalStyles/>
             <Wrapper>
+                <Logo/>
                 <Canvas>
                     <NotionWindow>
                         <WindowHeader>
