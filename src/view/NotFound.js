@@ -4,7 +4,6 @@ import Button from '../conponent/Button';
 import { EditorGlobalStyles } from '../constants/global';
 
 const Wrapper = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
     font-family: 'Outfit', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     padding: 30px;
     height: 100vh;
