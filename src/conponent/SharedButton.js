@@ -80,11 +80,12 @@ function SharedButton({ data, place, callback }) {
         if (data.newTab === "true" && data.action === "link") {
             window.open(data.url)
         } else if (data.action === "link"){
-            window.location.assign(data.url)
+            console.log("dd")
+            window.open(data.url, "_top")
         } else if (data.action === "mail"){
-            window.location.assign("mailto:" + data.url)
+            window.open("mailto:" + data.url, "_top")
         } else if (data.action === "call"){
-            window.location.assign("tel:" + data.url)
+            window.open("tel:" + data.url, "_top")
         }
     } 
     return (
