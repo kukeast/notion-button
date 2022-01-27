@@ -13,7 +13,6 @@ import { color } from '../constants/theme';
 import Logo from '../conponent/Logo';
 
 const Wrapper = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
     font-family: 'Outfit', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     padding: 30px;
     height: 100vh;
@@ -148,10 +147,10 @@ function Editor() {
     }
     const copyLink = () => {
         const queryString = QueryString.stringify(data)
-        return 'localhost:3000/share?' + queryString
+        return 'https://n-btn.link/share?' + queryString
     }
     useEffect(() => {
-        setDefaultButton(data.buttons.at(-1))
+        setDefaultButton(data.buttons[data.buttons.length - 1])
     }, [data])
     return (
         <>
