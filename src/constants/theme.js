@@ -148,6 +148,7 @@ export const color = {
 
 export const lightTheme = {
     background: color.GRAY0,
+    notion: color.WHITE,
     layer: color.WHITE,
     mockButton: color.WHITE,
     white: color.WHITE,
@@ -175,6 +176,7 @@ export const lightTheme = {
 
 export const darkTheme = {
     background: "#171a1c",
+    notion: "#2f3437",
     layer: color.GRAY9,
     mockButton: color.WHITE,
     white: color.WHITE,

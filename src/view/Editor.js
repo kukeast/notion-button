@@ -29,7 +29,7 @@ const Canvas = styled.div`
 `
 const NotionWindow = styled.div`
     box-shadow: 0px 8px 16px 0px rgba(33, 37, 41, 0.05);
-    background-color: ${({ theme }) => theme.layer};
+    background-color: ${({ theme }) => theme.notion};
     width: 700px;
     padding: 20px 20px 40px 20px;
     border-radius: 12px;
@@ -38,6 +38,7 @@ const NotionWindow = styled.div`
     gap: 40px;
 `
 const SelectBar = styled(NotionWindow)`
+    background-color: ${({ theme }) => theme.layer};
     flex-direction: row;
     justify-content: center;
     gap: 8px;
@@ -193,7 +194,7 @@ function Editor() {
                 <Panel>
                     <Controller selectButton={selectButton} data={data} callback={getData}/>
                     <ShareWrapper>
-                        <TextButton>How to embed link?</TextButton>
+                        <TextButton onClick={() => window.open("https://kukeast.notion.site/How-to-use-n-btn-link-a922c8007a3d49d2b05b7bff42c58c4d")}>How to embed link?</TextButton>
                         <CopyToClipboard text={copyLink()} onCopy={handleCopy}>
                             <Button copied={copied}>{copied ? 'Copied!' : 'Copy link'}</Button>
                         </CopyToClipboard>
