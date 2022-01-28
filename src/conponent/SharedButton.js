@@ -77,11 +77,13 @@ function SharedButton({ data, place, callback }) {
         callback(data.id)
     }
     const openLink = () => {
-        if (data.newTab === "true" && data.action === "link") {
-            window.open(data.url)
-        } else if (data.action === "link"){
-            console.log("dd")
-            window.open(data.url, "_top")
+        if (data.action === "link") {
+            const url = data.url.slice(0, 4) === "http" ? data.url : "https://" + data.url
+            if (data.newTab === "true"){
+                window.open(url)
+            }else {
+                window.open(url, "_top")
+            }
         } else if (data.action === "mail"){
             window.open("mailto:" + data.url, "_top")
         } else if (data.action === "call"){
