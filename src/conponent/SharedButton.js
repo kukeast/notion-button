@@ -1,6 +1,7 @@
 import React from 'react';
 import { darken } from 'polished';
 import styled, { css } from 'styled-components';
+import Icon from './Icon';
 
 const Style = {
     decoration: {
@@ -36,6 +37,7 @@ const Style = {
 }
 
 const Wrapper = styled.div`
+    position: relative;
     text-align: center;
     cursor: pointer;
     line-height: 1em;
@@ -71,8 +73,28 @@ const Wrapper = styled.div`
             color: ${darken(0.15, props.buttonStyle.backgroundColor)};
         }
     `}
+    ${props => props.isSelect && css`
+        box-shadow: 0 0 0 2px ${props.theme.white},0 0 0 4px ${props.theme.primary};
+    `}
+    &:hover{
+        > div{
+            opacity: 1;
+        }
+    }
 `
-function SharedButton({ data, place, callback }) {
+const DeleteWrapper = styled.div`
+    opacity: 0;
+    transition: 0.3s;
+    display: flex;
+    background-color: ${props => props.theme.red};
+    border: 2px solid ${props => props.theme.white};
+    border-radius: 16px;
+    padding: 3px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+`
+function SharedButton({ data, place, selectCallback, deleteCallback, buttonLength, isSelect }) {
     const openLink = () => {
         if (data.action === "link") {
             const url = data.url.slice(0, 4) === "http" ? data.url : "https://" + data.url
@@ -87,9 +109,9 @@ function SharedButton({ data, place, callback }) {
             window.open("tel:" + data.url, "_top")
         }
     }
-    const handleClick = e => {
+    const handleClick = () => {
         if(place === 'Editor'){
-            callback(data.id)
+            selectCallback(data.id)
         }else{
             openLink()
         }
@@ -99,8 +121,14 @@ function SharedButton({ data, place, callback }) {
             <Wrapper 
                 onClick={e => handleClick(e)}
                 buttonStyle={data}
+                isSelect={isSelect}
             >
                 {data.title ? data.title : 'Button name'}
+                {buttonLength > 1 &&
+                    <DeleteWrapper onClick={e => deleteCallback(e, data)}>
+                        <Icon color="white" name="delete"/>
+                    </DeleteWrapper>
+                }
             </Wrapper>
         </>
     )

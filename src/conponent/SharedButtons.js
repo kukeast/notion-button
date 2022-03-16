@@ -56,7 +56,7 @@ const Wrapper = styled.div`
         gap: ${props.layout.spacing}px;
     `}
 `
-function SharedButtons({ data, place, callback }) {
+function SharedButtons({ data, place, selectCallback, deleteCallback, selectButton }) {
     return(
         <Wrapper layout={data.layout}>
             {data.buttons.map( buttonData => (
@@ -64,7 +64,10 @@ function SharedButtons({ data, place, callback }) {
                     key={buttonData.id}
                     data={buttonData}
                     place={place}
-                    callback={callback}
+                    selectCallback={selectCallback}
+                    deleteCallback={deleteCallback}
+                    buttonLength={data.buttons.length}
+                    isSelect={selectButton === buttonData.id}
                 />
             ))}
         </Wrapper>

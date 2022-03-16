@@ -122,20 +122,21 @@ function Editor() {
             setCopied(false)
         }, 1500)
     }
-    // const handleDeleteButton = (e, button) => {
-    //     e.stopPropagation()
-    //     if(button.id === selectButton){
-    //         setSelectButton(data.buttons.filter(
-    //             b => b.id !== button.id
-    //         )[0].id)
-    //     }
-    //     setData({
-    //         ...data,
-    //         buttons: data.buttons.filter(
-    //             b => b.id !== button.id
-    //         )
-    //     })
-    // }
+    const handleDeleteButton = (e, button) => {
+        e.stopPropagation()
+        if(button.id === selectButton){
+            setSelectButton(data.buttons.filter(
+                b => b.id !== button.id
+            )[0].id)
+        }
+        setData({
+            ...data,
+            buttons: data.buttons.filter(
+                b => b.id !== button.id
+            )
+        })
+    }
+    console.log(data.buttons.length)
     const copyLink = () => {
         const queryString = QueryString.stringify(data)
         return 'https://n-btn.link/share?' + queryString
@@ -156,7 +157,9 @@ function Editor() {
                         <SharedButtons
                             data={data}
                             place='Editor'
-                            callback={selectButtonCallback}
+                            selectCallback={selectButtonCallback}
+                            deleteCallback={handleDeleteButton}
+                            selectButton={selectButton}
                         />
                         {data.buttons.length < 4 && 
                             <TextButton 
