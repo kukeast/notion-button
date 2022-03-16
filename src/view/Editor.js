@@ -136,7 +136,6 @@ function Editor() {
             )
         })
     }
-    console.log(data.buttons.length)
     const copyLink = () => {
         const queryString = QueryString.stringify(data)
         return 'https://n-btn.link/share?' + queryString
@@ -167,22 +166,6 @@ function Editor() {
                             >+ Add a new button</TextButton>
                         }
                     </NotionWindow>
-                    {/* {data.buttons.length > 1 && 
-                        <SelectBar>
-                            {data.buttons.map(button => (
-                                <Option
-                                    key={button.id}
-                                    onClick={() => setSelectButton(button.id)} 
-                                    deleteOnClick={e => handleDeleteButton(e, button)}
-                                    select={selectButton === button.id}
-                                    title={button.title}
-                                    type={button.type}
-                                    size={button.size}
-                                    roundedCorner={button.roundedCorner}
-                                />
-                            ))}
-                        </SelectBar>
-                    } */}
                 </Canvas>
                 <Panel>
                     <Controller selectButton={selectButton} data={data} callback={getData}/>
