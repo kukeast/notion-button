@@ -74,7 +74,7 @@ const Wrapper = styled.div`
         }
     `}
     ${props => props.isSelect && css`
-        box-shadow: 0 0 0 2px ${props.theme.white},0 0 0 4px ${props.theme.primary};
+        box-shadow: 0 0 0 2px ${props.theme.layer},0 0 0 4px ${props.theme.primary};
     `}
     &:hover{
         > div{
@@ -87,7 +87,7 @@ const DeleteWrapper = styled.div`
     transition: 0.3s;
     display: flex;
     background-color: ${props => props.theme.red};
-    border: 2px solid ${props => props.theme.white};
+    border: 2px solid ${props => props.theme.layer};
     border-radius: 16px;
     padding: 3px;
     position: absolute;
@@ -121,7 +121,7 @@ function SharedButton({ data, place, selectCallback, deleteCallback, buttonLengt
             <Wrapper 
                 onClick={e => handleClick(e)}
                 buttonStyle={data}
-                isSelect={isSelect}
+                isSelect={buttonLength > 1 && isSelect}
             >
                 {data.title ? data.title : 'Button name'}
                 {buttonLength > 1 &&
