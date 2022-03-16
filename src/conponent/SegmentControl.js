@@ -11,6 +11,7 @@ const Wrapper = styled.div`
 `
 const Segment = styled.div`
     flex: 1;
+    font-size: 16px;
     display: flex;
     justify-content: center;
     padding: 8px;
@@ -18,12 +19,13 @@ const Segment = styled.div`
     cursor: pointer;
     transition: 0.2s;
     background-color: ${props => props.select && props.theme.primary0};
+    color: ${props => props.select ? props.theme.primary : props.theme.gray8};
     &:hover{
         background-color: ${props => props.select ? props.theme.primary1 : props.theme.gray1};
     }
 `
 
-function SegmentControl({ name, segment, callback, defaultValue }) {
+function SegmentControl({ name, segment, type, callback, defaultValue }) {
     const [select, setSelect] = useState(defaultValue)
     const handleClick = i => {
         setSelect(i)
@@ -40,7 +42,10 @@ function SegmentControl({ name, segment, callback, defaultValue }) {
                     onClick={() => handleClick(i)}
                     select={select === i}
                 >
-                    <Icon color={select === i ? "primary" : "gray8"} name={i}/>
+                    {type === "icon" ? 
+                        <Icon color={select === i ? "primary" : "gray8"} name={i}/> :
+                        i.charAt(0).toUpperCase() + i.slice(1)
+                    }
                 </Segment>
             ))}
         </Wrapper>

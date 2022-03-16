@@ -22,7 +22,7 @@ const Tab = styled.div`
 const tabs = [
     {
         id: 1,
-        title: 'Button',
+        title: 'Properties',
     },
     {
         id: 2,

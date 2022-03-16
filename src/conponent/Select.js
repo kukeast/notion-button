@@ -8,7 +8,6 @@ const Wrapper = styled.div`
     font-weight: 400;
     padding: 10px;
     border-radius: 8px;
-    /* color: ${({theme}) => theme.gray9}; */
     border: 1px solid ${({theme}) => theme.gray2};
     display: grid;
     gap: 8px;

@@ -1,5 +1,5 @@
-import { darken } from 'polished';
 import React from 'react';
+import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 
 const Style = {
@@ -10,25 +10,25 @@ const Style = {
         strikethrough: css`text-decoration: line-through;`,
     },
     roundedCorner: {
-        square: css`border-radius: 0;`,
-        medium: css`border-radius: 8px;`,
-        large: css`border-radius: 16px;`,
-        pill: css`border-radius: 40px;`,
+        SQ: css`border-radius: 0;`,
+        M: css`border-radius: 8px;`,
+        L: css`border-radius: 16px;`,
+        PL: css`border-radius: 40px;`,
     },
     size: {
-        small: css`
+        S: css`
             font-size: 14px;
             padding: 10px 12px;
         `,
-        medium: css`
+        M: css`
             font-size: 16px;
             padding: 14px 16px;
         `,
-        large: css`
+        L: css`
             font-size: 18px;
             padding: 18px 20px;
         `,
-        big: css`
+        XL: css`
             font-size: 20px;
             padding: 22px 22px;
         `,
@@ -73,9 +73,6 @@ const Wrapper = styled.div`
     `}
 `
 function SharedButton({ data, place, callback }) {
-    const sendButtonId = () => {
-        callback(data.id)
-    }
     const openLink = () => {
         if (data.action === "link") {
             const url = data.url.slice(0, 4) === "http" ? data.url : "https://" + data.url
@@ -89,14 +86,23 @@ function SharedButton({ data, place, callback }) {
         } else if (data.action === "call"){
             window.open("tel:" + data.url, "_top")
         }
-    } 
+    }
+    const handleClick = e => {
+        if(place === 'Editor'){
+            callback(data.id)
+        }else{
+            openLink()
+        }
+    }
     return (
-        <Wrapper 
-            onClick={place === 'Editor' ? () => sendButtonId() : () => openLink()}
-            buttonStyle={data}
-        >
-            {data.title ? data.title : 'Button name'}
-        </Wrapper>
+        <>
+            <Wrapper 
+                onClick={e => handleClick(e)}
+                buttonStyle={data}
+            >
+                {data.title ? data.title : 'Button name'}
+            </Wrapper>
+        </>
     )
 }
 

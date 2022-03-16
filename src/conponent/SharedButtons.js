@@ -56,7 +56,6 @@ const Wrapper = styled.div`
         gap: ${props.layout.spacing}px;
     `}
 `
-
 function SharedButtons({ data, place, callback }) {
     return(
         <Wrapper layout={data.layout}>
