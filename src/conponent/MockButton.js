@@ -27,7 +27,7 @@ const boxStyle = {
         pill: css`border-radius: 24px;`,
     },
     type: {
-        container: css`background-color: ${({theme}) => theme.primary};`,
+        solid: css`background-color: ${({theme}) => theme.primary};`,
         outline: css`background-color: ${({theme}) => theme.MockButton};`
     }
 }
@@ -47,7 +47,7 @@ const textStyle = {
         `,
     },
     type: {
-        container: css`background-color: ${({theme}) => theme.layer};`,
+        solid: css`background-color: ${({theme}) => theme.layer};`,
         outline: css`background-color: ${({theme}) => theme.primary};`
     }
 }
@@ -71,7 +71,7 @@ const Text = styled.div`
     transition: 0.2s;
 `
 
-function MockButton({ size="large", roundedCorner="medium", type="container" }) {
+function MockButton({ size="large", roundedCorner="medium", type="solid" }) {
     return (
         <Wrapper size={size} roundedCorner={roundedCorner} type={type}>
             <Text size={size} type={type}/>

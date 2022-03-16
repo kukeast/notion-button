@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import Card from './Card';
 import ColorPicker from './ColorPicker';
 import SegmentControl from './SegmentControl';
-import Select from './Select';
 import SliderBar from './SliderBar';
 import Switch from './Switch';
 import Tabs from './Tabs';
 import TextField from './TextField';
 import { ThemeContext } from '../util/ThemeStore';
+import { properties } from '../constants/properties';
 
 const Wrapper = styled(Card)`
     display: flex;
@@ -103,8 +103,9 @@ function Controller({ selectButton, data, callback }) {
                     />
                     <Label>Action</Label>
                     <SegmentControl
+                        type="icon"
                         name='action'
-                        segment={["link", "mail", "call"]}
+                        segment={properties.action}
                         callback={getButtonsData}
                         defaultValue={currentButton.action} 
                     />
@@ -139,24 +140,27 @@ function Controller({ selectButton, data, callback }) {
                             />
                         </>
                     }
-                    <SwitchWrapper>
-                        <Label>Open a new tab</Label>
-                        <Switch
-                            name="newTab"
-                            callback={getButtonsData}
-                            defaultValue={currentButton.newTab} 
-                        />
-                    </SwitchWrapper>
+                    {currentButton.action === "link" && 
+                        <SwitchWrapper>
+                            <Label>Open a new tab</Label>
+                            <Switch
+                                name="newTab"
+                                callback={getButtonsData}
+                                defaultValue={currentButton.newTab} 
+                            />
+                        </SwitchWrapper>
+                    }
                     <Title>Style</Title>
                     <Label>Decoration</Label>
                     <SegmentControl
+                        type="icon"
                         name='decoration'
-                        segment={["none", "bold", "italic", "underline", "strikethrough"]}
+                        segment={properties.decoration}
                         callback={getButtonsData}
                         defaultValue={currentButton.decoration} 
                     />
                     <Label>Color</Label>
-                    {currentButton.type === "container" ? 
+                    {currentButton.type === "solid" ? 
                         <>
                             <ColorPicker
                                 name='backgroundColor'
@@ -180,42 +184,34 @@ function Controller({ selectButton, data, callback }) {
                     }
                     <Title>Shape</Title>
                     <Label>Type</Label>
-                    <Select
-                        name="type"
-                        options={["container", "outline"]}
-                        type={currentButton.type}
-                        size={currentButton.size}
-                        roundedCorner={currentButton.roundedCorner}
+                    <SegmentControl
+                        name='type'
+                        segment={properties.type}
                         callback={getButtonsData}
-                        defaultValue={currentButton.type}
+                        defaultValue={currentButton.type} 
                     />
                     <Label>Size</Label>
-                    <Select
-                        name="size"
-                        options={["small", "medium", "large", "big"]}
-                        type={currentButton.type}
-                        size={currentButton.size}
-                        roundedCorner={currentButton.roundedCorner}
+                    <SegmentControl
+                        name='size'
+                        segment={properties.size}
                         callback={getButtonsData}
-                        defaultValue={currentButton.size}
+                        defaultValue={currentButton.size} 
                     />
                     <Label>Rounded corner</Label>
-                    <Select
-                        name="roundedCorner"
-                        options={["square", "medium", "large", "pill"]}
-                        type={currentButton.type}
-                        size={currentButton.size}
-                        roundedCorner={currentButton.roundedCorner}
+                    <SegmentControl
+                        name='roundedCorner'
+                        segment={properties.roundedCorner}
                         callback={getButtonsData}
-                        defaultValue={currentButton.roundedCorner}
+                        defaultValue={currentButton.roundedCorner} 
                     />
                 </TabContents> :
                 <TabContents>
                     <Title>Layout</Title>
                     <Label>Width</Label>
                     <SegmentControl
+                        type="icon"
                         name='width'
-                        segment={["wrap", "wide"]}
+                        segment={properties.width}
                         callback={getLayoutData}
                         defaultValue={layoutData.width} 
                     />
@@ -223,8 +219,9 @@ function Controller({ selectButton, data, callback }) {
                         <>
                             <Label>Alignment</Label>
                             <SegmentControl
+                                type="icon"
                                 name='alignment'
-                                segment={["left", "center", "right"]}
+                                segment={properties.alignment}
                                 callback={getLayoutData}
                                 defaultValue={layoutData.alignment} 
                             />
@@ -234,8 +231,9 @@ function Controller({ selectButton, data, callback }) {
                         <>
                             <Label>Direction</Label>
                             <SegmentControl
+                                type="icon"
                                 name='direction'
-                                segment={["vertical", "horizental"]}
+                                segment={properties.direction}
                                 callback={getLayoutData}
                                 defaultValue={layoutData.direction} 
                             />

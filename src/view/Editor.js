@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import Button from '../conponent/Button';
 import Card from '../conponent/Card';
 import Controller from '../conponent/Controller';
-import { Option } from '../conponent/Select';
 import SharedButtons from '../conponent/SharedButtons';
 import TextButton from '../conponent/TextButton';
 import { EditorGlobalStyles } from '../constants/global';
 import { color } from '../constants/theme';
 import Logo from '../conponent/Logo';
+import { properties } from '../constants/properties';
 
 const Wrapper = styled.div`
     font-family: 'Outfit', BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -36,16 +36,6 @@ const NotionWindow = styled.div`
     display: flex;
     flex-direction: column;
     gap: 40px;
-`
-const SelectBar = styled(NotionWindow)`
-    background-color: ${({ theme }) => theme.layer};
-    flex-direction: row;
-    justify-content: center;
-    gap: 8px;
-    padding: 20px;
-    > div {
-        width: 160px;
-    }
 `
 const WindowHeader = styled.div`
     display: flex;
@@ -84,15 +74,15 @@ var lastButtonId = 1
 const defaultButtonStyle = {
     id: 1,
     url: '',
-    action: 'link',
+    action: properties.action[0],
     newTab: false,
     title: '',
     backgroundColor: color.BLACK,
     textColor: color.WHITE,
-    type: 'container',
-    size: 'large',
-    roundedCorner: 'medium',
-    decoration: 'none',
+    decoration: properties.decoration[0],
+    type: properties.type[0],
+    size: properties.size[2],
+    roundedCorner: properties.roundedCorner[1],
 }
 
 function Editor() {
@@ -100,10 +90,10 @@ function Editor() {
     const [defaultButton, setDefaultButton] = useState(defaultButtonStyle)
     const [data, setData] = useState({
         layout: {
-            alignment: 'center',
-            direction: 'vertical',
+            alignment: properties.alignment[1],
+            direction: properties.direction[0],
             spacing: 16,
-            width: 'wrap',
+            width: properties.width[0],
         },
         buttons: [defaultButton]
     })
@@ -174,7 +164,7 @@ function Editor() {
                             >+ Add a new button</TextButton>
                         }
                     </NotionWindow>
-                    {data.buttons.length > 1 && 
+                    {/* {data.buttons.length > 1 && 
                         <SelectBar>
                             {data.buttons.map(button => (
                                 <Option
@@ -189,7 +179,7 @@ function Editor() {
                                 />
                             ))}
                         </SelectBar>
-                    }
+                    } */}
                 </Canvas>
                 <Panel>
                     <Controller selectButton={selectButton} data={data} callback={getData}/>
