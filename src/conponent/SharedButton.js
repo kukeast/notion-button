@@ -124,7 +124,7 @@ function SharedButton({ data, place, selectCallback, deleteCallback, buttonLengt
                 isSelect={buttonLength > 1 && isSelect}
             >
                 {data.title ? data.title : 'Button name'}
-                {buttonLength > 1 &&
+                {buttonLength > 1 && place === 'Editor' &&
                     <DeleteWrapper onClick={e => deleteCallback(e, data)}>
                         <Icon color="white" name="delete"/>
                     </DeleteWrapper>
