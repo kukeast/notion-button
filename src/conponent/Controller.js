@@ -100,6 +100,7 @@ function Controller({ selectButton, data, callback }) {
                         placeholder="Button name"
                         name='title' 
                         callback={getButtonsData}
+                        maxLength={32}
                     />
                     <Label>Action</Label>
                     <SegmentControl
@@ -137,6 +138,7 @@ function Controller({ selectButton, data, callback }) {
                                 placeholder="Paste phone number"
                                 name='url' 
                                 callback={getButtonsData}
+                                maxLength={12}
                             />
                         </>
                     }

@@ -23,7 +23,7 @@ const Wrapper = styled.input`
     }
 `
 
-function TextField({ defaultValue, placeholder, name, type = 'text', callback }) {
+function TextField({ defaultValue, maxLength, placeholder, name, type = 'text', callback }) {
     const [text, setText] = useState(defaultValue);
     const inputElem = useRef();
     const handleChange = () => {
@@ -36,7 +36,7 @@ function TextField({ defaultValue, placeholder, name, type = 'text', callback })
     return (
         <Wrapper
             type={type}
-            maxLength={32}
+            maxLength={maxLength}
             onChange={handleChange}
             placeholder={placeholder}
             value={text}
