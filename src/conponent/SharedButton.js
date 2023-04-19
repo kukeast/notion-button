@@ -76,7 +76,7 @@ const Wrapper = styled.div`
     ${props => props.isSelect && css`
         box-shadow: 0 0 0 2px ${props.theme.layer},0 0 0 4px ${props.theme.primary};
     `}
-    &:hover{
+    &:hover{ 
         > div{
             opacity: 1;
         }
