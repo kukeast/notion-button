@@ -1,5 +1,5 @@
-import React from 'react';
 import { darken } from 'polished';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import Icon from './Icon';
 
@@ -72,7 +72,7 @@ const Wrapper = styled.div`
             border: 2px solid ${darken(0.15, props.buttonStyle.backgroundColor)};
             color: ${darken(0.15, props.buttonStyle.backgroundColor)};
         }
-    `}
+    `} 
     ${props => props.isSelect && css`
         box-shadow: 0 0 0 2px ${props.theme.layer},0 0 0 4px ${props.theme.primary};
     `}
